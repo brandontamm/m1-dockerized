@@ -1,0 +1,6 @@
+# Never commit private keys or generated certificates
+cert.key
+cert.pem
+cert.csr
+*.pem
+*.key

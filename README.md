@@ -62,10 +62,17 @@ I suppose it will work on Windows, but I have not tested it. And I suspect that 
 
 1. Make sure you have docker and docker-compose on your system
 2. Clone the repository
-3. Start the projects using `./magento start` or `docker-compose up`
+3. Generate local HTTPS certificates (required before first start):
+
+```bash
+./config/ssl/generate-dev-cert.sh
+```
+
+4. Start the projects using `./magento start` or `docker-compose up`
 
 ```bash
 git clone https://github.com/andreaskoch/dockerized-magento.git && cd dockerized-magento
+./config/ssl/generate-dev-cert.sh
 ./magento start
 ```
 
@@ -172,8 +179,7 @@ installer:
 
 ### Using a different SSL certificate
 
-By default I chose a dummy certificate ([config/ssl/cert.pem](config/ssl/cert.pem)).
-If you want to use a different certificate you can just override the key and cert with your own certificates.
+Certificates are generated locally and are not part of the repo (see [config/ssl/README.md](config/ssl/README.md)). Run `./config/ssl/generate-dev-cert.sh` for a self-signed pair, or replace `config/ssl/cert.pem` and `config/ssl/cert.key` on your machine with your own files before starting the stack.
 
 ### Adapt Magento Installation Parameters
 
